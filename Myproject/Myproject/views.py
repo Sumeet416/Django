@@ -11,3 +11,6 @@ def about(Request):
 def contact(Request):
     # return HttpResponse("Hello World, you are at contact page")
     return render(Request , 'website/contact.html')
+
+def layout(Request):
+    return render(Request , 'layout.html')

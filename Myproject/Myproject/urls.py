@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.home ,name='Home'),
     path('about/', views.about ,name='About'),
     path('contact/', views.contact ,name='Contact'),
-    path('app/', include('App.urls'))
+    path('app/', include('App.urls')),
+    path('layout/', views.layout , name = 'Layout'),
 ]
