@@ -9,22 +9,26 @@
 		{% tailwind_css %}
 	</head>
 	<body class = "m-0 p-0 box-border font-sans cursor-default">
-	<div class = "w-full h-full ">
+	{% block NavBar %}
+    <div class = "">
 		<div>
-			<nav class="flex justify-between min-w-10 min-h-2 p-3 cursor-default mx-8 border-b-2 border-blue-600">
+			<nav class="flex justify-between min-w-10 min-h-2 p-3 cursor-default px-8 border-b-2 border-blue-200">
 				<div>
-					<span class="text-2xl text-blue-700 font-bold">JOBTANK</span>
+					<div class="text-2xl w-[75px] text-blue-700 font-bold"><a href="/">JOBTANK</a></div>
 				</div>
 				<div>
 					<ul class="flex justify-center items-center font-semibold gap-8 pt-1 text-[16px] text-blue-600 " >
-						<li class="hover:text-blue-400 hover:underline">about us</li>
-						<li class="hover:text-blue-400 hover:underline">services</li>
-						<li class="hover:text-blue-400 hover:underline">support</li>
-						<li class="hover:text-blue-400 hover:underline">signup</li>
+						<li class="hover:text-blue-400 hover:underline"><a href="/about">About</a></li>
+						<li class="hover:text-blue-400 hover:underline"><a href="/contact">Support</a></li>
+						<li class="hover:text-blue-400 hover:underline"><a href="/">Sign up</a></li>
 					</ul>
 				</div>
 			</nav>
 		</div>
+    </div>
+    {% endblock NavBar %}
+    {% block content %}
+    <div>
 		<div class="flex flex-col gap-y-4 min-w-10 justify-center items-center mt-[60px]">
 			<div>
 				<img src="https://factohr.com/wp-content/themes/factohr-theme/images/blog/top-job-portal/1-Top-job-portals-in-India.png" alt="" srcset="" class="w-[400px]">
@@ -44,6 +48,7 @@
 			</div>
 		</div>
 	</div>
+    {% endblock content %}
 	</body>
 	
 </html>

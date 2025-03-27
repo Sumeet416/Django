@@ -1,8 +1,34 @@
-{% extends "layout.html" %}
-{% block Title %}
-About Page
-{% endblock  %}
+{% extends "website/index.html" %}
 
-{% block Content %}
-This is About Page 
-{% endblock %}
+{% block content %}
+<div class="mt-20 flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center px-24">
+        <h1 class="text-6xl tracking-tight font-semibold text-blue-500 my-8">Our Mission</h1>
+        <p class="text-[20px] px-20 text-center font-medium my-4">At Better Job, we believe that everyone deserves a fulfilling career path. Our platform is designed to bridge the gap between talented professionals and forward-thinking employers, creating meaningful connections that transform lives and businesses.</p>
+    </div>
+    <div class="bg-white border-2 border-gray-200 rounded-lg mt-10 shadow-md w-[80%] py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">Salary benefiting our users</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$44 million</dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">Current job market</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$119 trillion</dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base/7 text-gray-600">New users annually</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">46,000</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      
+    <div class="flex flex-1 flex-col justify-center items-center">
+        <h2 class="text-5xl font-semibold tracking-tight text-blue-500 mt-16">Who are we?</h2>
+        <p class="text-[20px] my-16 px-20 text-center font-medium px-32">Founded by industry veterans with deep insights into the job market, BetterJob emerged from a simple yet powerful vision: to revolutionize the way people find jobs and companies discover exceptional talent. We're not just another job board – we're a comprehensive career advancement ecosystem.</p>
+    </div>
+
+</div>
+{% endblock content %}
