@@ -1,0 +1,33 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Django Tailwind</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-gray-900 font-serif leading-normal tracking-normal">
+		{% block Content %}
+		<h1 class=" m-4 text-center text-white font-bold text-3xl ">MENU</h1>
+		<div class="grid grid-cols-3 m-6 text-white gap-8">
+		{% for chai in chais %}
+			<div class="chai-item rounded flex flex-col justify-center items-center my-2 px-4 py-4 w-96 h-80 overflow-hidden bg-blue-700">
+				<img src="{{chai.image.url}}" alt="" class=" py-2 shadow-lg w-full h-[80%] rounded-sm object-contain">					
+				<div class="flex justify-between w-full">
+					<h3 class="font-semibold text-2xl">{{chai.name}}</h3>
+					<p>₹ {{chai.price}}</p>
+				</div>
+				<a href="#">
+					<button class=" my-2 inline-flex w-full bg-orange-600 items-center justify-center px-10 py-2 border border-transparent text-sm font-medium rounded-md text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 " type="button">
+					{{chai.name}} - {{chai.id}}
+					</button>
+				</a>
+			</div>
+		{% endfor %}
+		</div>
+		{% endblock Content %}
+	</body>
+</html>

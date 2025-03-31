@@ -26,9 +26,8 @@ urlpatterns = [
     path('about/', views.about ,name='About'),
     path('contact/', views.contact ,name='Contact'),
     path('app/', include('App.urls')),
-    path('layout/', views.layout , name = 'Layout'),
+    path('chai/', include('Chai.urls')),
 
 
-
-    path("__reload__/", include("django_browser_reload.urls")),
+    # path("__reload__/", include("django_browser_reload.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
