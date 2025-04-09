@@ -8,7 +8,10 @@ def about(Request):
     # return HttpResponse("Hello World, you are at about page")
     return render(Request , 'website/about.html')
 
-def contact(Request):
+def blogs(Request):
     # return HttpResponse("Hello World, you are at contact page")
-    return render(Request , 'website/contact.html')
+    return render(Request , 'website/blogs.html')
 
+def jobs(Request):
+    # return HttpResponse("Hello World, you are at jobs page")
+    return render(Request , 'website/jobs.html')

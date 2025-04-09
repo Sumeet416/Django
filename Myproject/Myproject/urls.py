@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home ,name='Home'),
     path('about/', views.about ,name='About'),
-    path('contact/', views.contact ,name='Contact'),
+    path('blogs/', views.blogs ,name='Blogs'),
+    path('jobs/', views.jobs ,name='Jobs'),
     path('app/', include('App.urls')),
     path('chai/', include('Chai.urls')),
 
