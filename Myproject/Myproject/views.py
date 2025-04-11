@@ -15,3 +15,7 @@ def blogs(Request):
 def jobs(Request):
     # return HttpResponse("Hello World, you are at jobs page")
     return render(Request , 'website/jobs.html')
+
+def application(Request):
+    # return HttpResponse("Hello World, you are at application page")
+    return render(Request , 'website/applicant_info.html')

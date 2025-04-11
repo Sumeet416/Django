@@ -26,6 +26,7 @@ urlpatterns = [
     path('about/', views.about ,name='About'),
     path('blogs/', views.blogs ,name='Blogs'),
     path('jobs/', views.jobs ,name='Jobs'),
+    path('application/', views.application ,name='Application'),
     path('app/', include('App.urls')),
     path('chai/', include('Chai.urls')),
 
