@@ -29,6 +29,7 @@ urlpatterns = [
     path('application/', views.application ,name='Application'),
     path('app/', include('App.urls')),
     path('chai/', include('Chai.urls')),
+    path('base/', include('base.urls')),
 
 
     # path("__reload__/", include("django_browser_reload.urls")),

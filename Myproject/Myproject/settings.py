@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'App',
     'Chai',
+    'base',
     'tailwind',
     'theme',
 ]
