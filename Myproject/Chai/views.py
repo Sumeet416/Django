@@ -1,6 +1,15 @@
-from django.shortcuts import render
-from .models import ChaiVarity
-# Create your views here.
-def chai(Request):
-    chais = ChaiVarity.objects.all()
-    return render(Request, 'chai/chai.html', {'chais':chais})
+from django.shortcuts import render, redirect
+from .forms import ReviewForm
+
+def submit_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('review_success')
+    else:
+        form = ReviewForm()
+    return render(request, 'chai/review_form.html', {'form': form})
+
+def review_success(request):
+    return render(request, 'chai/review_success.html')
