@@ -25,10 +25,11 @@ urlpatterns = [
     path('', views.home ,name='Home'),
     path('about/', views.about ,name='About'),
     path('blogs/', views.blogs ,name='Blogs'),
-    path('jobs/', views.jobs ,name='Jobs'),
+    # path('jobs/', views.jobs ,name='Jobs'),
     path('application/', views.application ,name='Application'),
     path('chai/', include('Chai.urls')),
-    path('base/', include('base.urls')),
+    path('jobs/', include('jobs.urls')),
+
 
 
     # path("__reload__/", include("django_browser_reload.urls")),
