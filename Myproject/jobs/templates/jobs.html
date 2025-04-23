@@ -1,29 +1,95 @@
 {% extends "website/index.html" %}
 
-
 {% block content %}
-<section class="text-gray-600 body-font overflow-hidden">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="-my-8 divide-y-2 divide-gray-100">
-        <div class="py-8 flex flex-wrap md:flex-nowrap">
-          <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-            <span class="font-semibold title-font text-gray-700">CATEGORY</span>
-            <span class="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
-          </div>
-          <div class="md:flex-grow">
-            <h2 class="text-2xl font-medium text-gray-200 title-font mb-2">Bitters hashtag waistcoat fashion axe chia unicorn</h2>
-            <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-            <a class="text-indigo-500 inline-flex items-center mt-4">Explore
-              <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="-my-8 divide-y-2 divide-gray-100">
+      {% for job in jobs %}
+      <div class="py-8 flex flex-wrap md:flex-nowrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="font-semibold title-font text-gray-700">{{ job.job_type }}</span>
+          <span class="mt-1 text-gray-500 text-sm">{{ job.date_posted|date:"d M Y" }}</span>
         </div>
-        {% comment "This is one list of the stack" %}{% endcomment %}
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-800 title-font mb-2">{{ job.job_name }}</h2>
+          <p class="leading-relaxed text-gray-700">{{ job.job_description }}</p>
+          <a href="#" class="text-indigo-500 inline-flex items-center mt-4 explore-button" data-job-id="{{ job.id }}">
+            Apply
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
       </div>
+      {% endfor %}
     </div>
-  </section>
-  
+  </div>
+
+  <!-- Application Form Modal -->
+  <div id="application-form-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-8 max-w-lg w-full relative">
+      <button id="close-modal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+      <h3 class="text-2xl font-semibold mb-4 text-gray-800">Application Form</h3>
+      <form method="post" action="{% url 'job_apply' %}" enctype="multipart/form-data" id="application-form" class="space-y-4">
+        {% csrf_token %}
+        <div>
+          {{ form.full_name.label_tag }}<br>
+          {{ form.full_name }}
+        </div>
+        <!-- Removed hidden select for job to avoid validation error -->
+        <div>
+          {{ form.email.label_tag }}<br>
+          {{ form.email }}
+        </div>
+        <div>
+          {{ form.salary_expectation.label_tag }}<br>
+          {{ form.salary_expectation }}
+        </div>
+        <div>
+          {{ form.about.label_tag }}<br>
+          {{ form.about }}
+        </div>
+        <div>
+          {{ form.resume.label_tag }}<br>
+          {{ form.resume }}
+        </div>
+        <div>
+          {{ form.cover_letter.label_tag }}<br>
+          {{ form.cover_letter }}
+        </div>
+        <input type="hidden" name="job" id="job-id-input" value="">
+        <button type="submit" class="mt-4 bg-indigo-500 text-orange-400 px-6 py-2 rounded hover:bg-indigo-600">Apply</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('application-form-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const exploreButtons = document.querySelectorAll('.explore-button');
+  const jobIdInput = document.getElementById('job-id-input');
+
+  exploreButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const jobId = this.getAttribute('data-job-id');
+      jobIdInput.value = jobId;
+      modal.classList.remove('hidden');
+    });
+  });
+
+  closeModalBtn.addEventListener('click', function () {
+    modal.classList.add('hidden');
+  });
+
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+});
+</script>
 {% endblock content %}
